@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  python:
+    image: app
+    container_name: test_app
+    ports:
+      - "5000:5000"
+    logging:
+      driver: local
