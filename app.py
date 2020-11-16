@@ -119,7 +119,7 @@ class Quote(Resource):
             "quote": params["quote"]
         }
         ai_quotes.append(quote)
-        return quote, 200
+        return quote, 201
 
     def put(self, id):
         parser = reqparse.RequestParser()
