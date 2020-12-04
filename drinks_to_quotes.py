@@ -28,7 +28,9 @@ class Drinks:
         return new_item
     def post_api_app(self): 
         for i in range(int(self.num)):
-            request_post = requests.post(self.post_url + str(randint(100,1000)),data=Drinks.get_drinks(self))
+            request_post = requests.post(
+                self.post_url + str(randint(100,1000)),
+                data=Drinks.get_drinks(self))
             s = json.loads(request_post.text)
-start1 = Drinks(post_url='http://127.0.0.1:5000/ai-quotes/',url='https://www.thecocktaildb.com/api/json/v1/1/random.php',num='10')
-start1.post_api_app()
+start = Drinks(post_url='http://127.0.0.1:5000/ai-quotes/',url='https://www.thecocktaildb.com/api/json/v1/1/random.php',num='10')
+start.post_api_app()

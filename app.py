@@ -1,18 +1,19 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
 import random
+
 app = Flask(__name__)
 api = Api(app)
 
 ai_quotes = [
     {
-        "id": 0,
+        "_id": 0,
         "author": "Kevin Kelly",
         "quote": "The business plans of the next 10,000 startups are easy to forecast: " +
                  "Take X and add AI."
     },
     {
-        "id": 1,
+        "_id": 1,
         "author": "Stephen Hawking",
         "quote": "The development of full artificial intelligence could " +
                  "spell the end of the human race… " +
@@ -22,14 +23,14 @@ ai_quotes = [
                  "couldn't compete, and would be superseded."
     },
     {
-        "id": 2,
+        "_id": 2,
         "author": "Claude Shannon",
         "quote": "I visualize a time when we will be to robots what " +
                  "dogs are to humans, " +
                  "and I’m rooting for the machines."
     },
     {
-        "id": 3,
+        "_id": 3,
         "author": "Elon Musk",
         "quote": "The pace of progress in artificial intelligence " +
                  "(I’m not referring to narrow AI) " +
@@ -42,7 +43,7 @@ ai_quotes = [
                  "10 years at most."
     },
     {
-        "id": 4,
+        "_id": 4,
         "author": "Geoffrey Hinton",
         "quote": "I have always been convinced that the only way " +
                  "to get artificial intelligence to work " +
@@ -52,7 +53,7 @@ ai_quotes = [
                  "how the brain actually works."
     },
     {
-        "id": 5,
+        "_id": 5,
         "author": "Pedro Domingos",
         "quote": "People worry that computers will " +
                  "get too smart and take over the world, " +
@@ -60,7 +61,7 @@ ai_quotes = [
                  "and they've already taken over the world."
     },
     {
-        "id": 6,
+        "_id": 6,
         "author": "Alan Turing",
         "quote": "It seems probable that once the machine thinking " +
                  "method had started, it would not take long " +
@@ -71,7 +72,7 @@ ai_quotes = [
                  "have to expect the machines to take control."
     },
     {
-        "id": 7,
+        "_id": 7,
         "author": "Ray Kurzweil",
         "quote": "Artificial intelligence will reach " +
                  "human levels by around 2029. " +
@@ -81,7 +82,7 @@ ai_quotes = [
                  "of our civilization a billion-fold."
     },
     {
-        "id": 8,
+        "_id": 8,
         "author": "Sebastian Thrun",
         "quote": "Nobody phrases it this way, but I think " +
                  "that artificial intelligence " +
@@ -89,7 +90,7 @@ ai_quotes = [
                  "to understand human intelligence and human cognition."
     },
     {
-        "id": 9,
+        "_id": 9,
         "author": "Andrew Ng",
         "quote": "We're making this analogy that AI is the new electricity." +
                  "Electricity transformed industries: agriculture, " +
@@ -99,7 +100,7 @@ ai_quotes = [
 class Quote(Resource):
     def get(self, id=0):
         if id == 0:
-            return random.choice(ai_quotes), 200
+            return "Quote not found", 404
         for quote in ai_quotes:
             if(quote["id"] == id):
                 return quote, 200
@@ -150,3 +151,10 @@ class Quote(Resource):
 api.add_resource(Quote, "/ai-quotes", "/ai-quotes/", "/ai-quotes/<int:id>")
 if __name__ == '__main__':
     app.run(debug=False,host='0.0.0.0')
+    
+# def connect():
+#     client = MongoClient('127.0.0.1', 27017)
+#     db = client.primer
+#     coll = db.dataset
+# connect()
+
