@@ -24,7 +24,7 @@ class Drinks:
                 new_item['quote'] = item['strInstructions']
                 new_json = json.dumps(new_item)
             except :
-                raise Exception ('Something wrong')  
+                raise Exception ('Somethin wrong')  
         return new_item
     def post_api_app(self): 
         for i in range(int(self.num)):
